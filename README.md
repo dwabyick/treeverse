@@ -1,4 +1,4 @@
 treeverse
 ======
 
-Simple TreeNode and tree traversal utilities.
+Simple tree traversal utilities.
