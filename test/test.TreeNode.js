@@ -1,13 +1,13 @@
-var TreeNode = require('../index');
+var TreeNode = require('../TreeNode');
 var expect = require('chai').expect;
 
 describe('TreeNode', function() {
 
-  var rootNode, a, b, c;
+  var rootNode, b, c;
   before(function() {
-    a = rootNode = new TreeNode();
-    b = new TreeNode();
-    c = new TreeNode();
+    rootNode = new TreeNode('a');
+    b = new TreeNode('b');
+    c = new TreeNode('c');
   });
 
   describe('root constructor', function() {
@@ -38,6 +38,11 @@ describe('TreeNode', function() {
       expect(rootNode.children.indexOf(b)).to.equal(0);
     });
 
+    it('should set the parent of the child node', function() {
+      rootNode.addChild(b);
+      expect(b.parent).to.equal(rootNode);
+    });
+
     it('should put arguments in the correct order', function() {
       rootNode.addChild(b);
       rootNode.addChild(c);
@@ -49,6 +54,7 @@ describe('TreeNode', function() {
       rootNode.addChild(b);
       expect(rootNode.children.length).to.equal(1);
     });
+
 
 
   });

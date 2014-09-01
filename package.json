@@ -2,7 +2,7 @@
   "name": "treent",
   "version": "0.0.1",
   "description": "A simple library for incremental tree traversals.",
-  "main": "index.js",
+  "main": "TreeNode.js",
   "scripts": {
     "test": "mocha test"
   },

@@ -1,35 +1,64 @@
 /**
- * A minimal TreeNode class to test the traversal functions.
- * @constructor
+ * Functions for depth-first and breadth-first tree traversal.
+ *
+ * What differentiates this mini-lib is that it provides iterator
+ * functions that do not require a complete traversal of the tree.
  */
 
-function TreeNode() {
-  this._children = [];
-  this._parent = null;
-}
+/**
+ * Return the next node using a depth first tree traversal.
+ * @param node The given node
+ * @return The next node in the depth first traversal, looping to the root if available.
+ */
+var nextDepthFirstNode = function(node) {
 
-
-Object.defineProperties(TreeNode.prototype, { 
-  "children": {
-    get: function() {
-      return this._children;	
-    }
-  },
-  "parent": {
-    get: function() {
-      return this._parent;
-    }
-  }
-});
-
-
-TreeNode.prototype.addChild = function (child) {
-  if (this._children.indexOf(child) >= 0) {
-    return;
+  var index, parent;
+  if (node.children.length > 0) {
+    return node.children[0];
   }
   else {
-    this._children.push(child);
+    while (parent = node.parent) {
+      index = parent.children.indexOf(node);
+      if (index < parent.children.length - 1) {
+        return parent.children[index + 1];
+      }
+      node = node.parent;
+    }
+    return node;
   }
+};
+
+
+/**
+ * Return the previous node using a depth first tree traversal.
+ * @param node The given node
+ * @return The previous node in the depth first traversal, looping to the last descendent if necessary.
+ */
+var previousDepthFirstNode = function(node) {
+  var index, parent;
+  parent = node.parent;
+  if (parent) {
+    index = parent.children.indexOf(node);
+    if (index === 0) {
+      return parent;
+    }
+    else {
+      return _selectLastDescendent(parent.children[index-1]);
+    }
+
+  }
+  else {
+    return _selectLastDescendent(node);
+  }
+
 }
 
-module.exports = TreeNode;
+var _selectLastDescendent = function(node) {
+  while (node.children.length > 0) {
+    node = node.children[ node.children.length - 1 ];
+  }
+  return node;
+}
+
+module.exports.nextDepthFirstNode = nextDepthFirstNode;
+module.exports.previousDepthFirstNode = previousDepthFirstNode;
