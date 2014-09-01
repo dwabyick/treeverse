@@ -1,19 +1,19 @@
 {
-  "name": "treent",
+  "name": "treeverse",
   "version": "0.0.1",
-  "description": "A simple library for incremental tree traversals.",
-  "main": "TreeNode.js",
+  "description": "A micro library for basic tree traversal.",
+  "main": "index.js",
   "scripts": {
     "test": "mocha test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dwabyick/treent.git"
+    "url": "https://github.com/dwabyick/treeverse.git"
   },
   "author": "Daniel Wabyick",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dwabyick/treent/issues"
+    "url": "https://github.com/dwabyick/treeverse/issues"
   },
-  "homepage": "https://github.com/dwabyick/treent"
+  "homepage": "https://github.com/dwabyick/treeverse"
 }
